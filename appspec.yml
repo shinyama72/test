@@ -4,14 +4,9 @@ os: linux
 files:
   - source: /index.html
     destination: /var/www/html
-    overwrite: yes
+file_exists_behavior: OVERWRITE
 
 hooks:
-  BeforeInstall:
-    - location: scripts/delete_old_index.sh
-      timeout: 60
-      runas: root
-
   AfterInstall:
     - location: scripts/restart_apache.sh
       timeout: 60
